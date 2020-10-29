@@ -59,7 +59,7 @@ function showQuestion(questionIndex) {
     questionSec.innerHTML = "";
     ulSecBuild.innerHTML = "";
     //remove Start Button
-    startBtn.parentNode.removeChild(startBtn);
+    startBtn.setAttribute("style","display:none");
     // For loops to loop through all info in array
     for (var i = 0; i < questions.length; i++) {
         // Appends question title only
@@ -73,10 +73,34 @@ function showQuestion(questionIndex) {
         listItem.textContent = newItem;
         questionSec.appendChild(ulSecBuild);
         ulSecBuild.appendChild(listItem);
+        listItem.addEventListener("click", (solve));
     })
 }
 
+function solve(event) {
+    var element = event.target;
 
+    if (element.matches("li")) {
+        var divSecBuild = document.createElement("div");
+        divSecBuild.setAttribute("id","promptDiv");
+
+        if (element.textContent === questions[questionIndex].answer){
+            secondsLeft++;
+            divSecBuild.textContent= "GOOD JOB You are CORRECT"
+        } else {
+            secondsLeft=secondsLeft-10;
+            divSecBuild.textContent= "You are WRONG";
+        }
+    }
+    questionIndex++
+    if (questionIndex >= questions.length) {
+        // All done will append last page with user stats
+        divSecBuild.textContent = "Good Job you are Done!!"
+    } else {
+        showQuestion(questionIndex);
+    }
+    questionSec.appendChild(createDiv);
+}
  
 
 
