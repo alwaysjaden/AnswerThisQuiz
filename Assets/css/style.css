@@ -9,11 +9,10 @@
 
 }
 
-h1 {
-    font-size : 45px;
-}
-h2 {
-    font-size: 30px;
+#questionsSec {
+    font-size: 20px;
+    color: royalblue;
+    text-align: center;
 }
 
 button {
@@ -39,8 +38,27 @@ li {
     margin : auto;
     margin-top: 20px;
     width: 300px;
-    height: 30px;
+    height: 35px;
     background-color: white;
     border:2px solid blue;
 
+}
+
+#promptDiv {
+    font-family: cursive;
+    font-size: 40px;
+    color: gray;
+}
+
+ul p {
+    text-align: center;
+    color: black;
+    font-size : 20px;
+}
+hr {
+height: 10px; 
+}
+
+#Submit{
+    border:1px solid gray;
 }
