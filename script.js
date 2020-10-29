@@ -21,3 +21,76 @@ var questions = [{
 }];
 
 
+var timeLeft= document.querySelector("#timer");
+var startBtn = document.querySelector("#start");
+var secondsLeft = 70;
+var timerInterval= 0;
+var questionSec = document.getElementById("questionsSec");
+var choiceSec = document.getElementById("choiceSec");
+var ulSecBuild= document.createElement("ul");
+var questionIndex = 0;
+
+
+
+// display prompt
+    // Display first screen with Start Button
+// Set timer Function for the Quiz
+
+startBtn.addEventListener("click", function () {
+    // We are checking zero because its originally set to zero
+    if (timerInterval === 0) {
+        timerInterval = setInterval(function () {
+            secondsLeft--;
+            timeLeft.textContent = "Time: " + secondsLeft;
+
+            if (secondsLeft <= 0) {
+                clearInterval(timerInterval);
+                allDone();
+                alert("Time's up!");
+            }
+        }, 1000);
+    }
+    showQuestion(questionIndex);
+});
+
+
+function showQuestion(questionIndex) {
+    // Clears existing data 
+    questionSec.innerHTML = "";
+    ulSecBuild.innerHTML = "";
+    //remove Start Button
+    startBtn.parentNode.removeChild(startBtn);
+    // For loops to loop through all info in array
+    for (var i = 0; i < questions.length; i++) {
+        // Appends question title only
+        var userQuestion = questions[questionIndex].question;
+        var userChoices = questions[questionIndex].answers;
+        questionSec.textContent = userQuestion;
+    }
+    // New for each for question choices
+    userChoices.forEach(function (newItem) {
+        var listItem = document.createElement("li");
+        listItem.textContent = newItem;
+        questionSec.appendChild(ulSecBuild);
+        ulSecBuild.appendChild(listItem);
+    })
+}
+
+
+ 
+
+
+
+/*
+// sum all scores from Question 
+
+// display total score with input name [ input in HTML]
+
+// Store Name 
+submitBtn.addEventListener("click", function() {
+    // var record = name from input
+    // score from score 
+    localStorage.setItem("Name", name);
+    localStorage.setItem("score Record", totalPoint);
+  });
+*/

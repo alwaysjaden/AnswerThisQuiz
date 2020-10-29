@@ -9,6 +9,9 @@
 
 }
 
+h1 {
+    font-size : 45px;
+}
 h2 {
     font-size: 30px;
 }
@@ -25,5 +28,19 @@ button {
 #start button {
     background-color: black;
     color: white;
-    border: 0
+    border: 0;
+    margin: auto;
+    width: 300px;
+    height: 30px;
+}
+li {
+    list-style-type: none;
+    text-align: center;
+    margin : auto;
+    margin-top: 20px;
+    width: 300px;
+    height: 30px;
+    background-color: white;
+    border:2px solid blue;
+
 }
