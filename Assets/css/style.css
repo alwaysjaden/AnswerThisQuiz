@@ -54,6 +54,9 @@ ul li {
 }
 
 .modal-content {
+    list-style-type: none;
+    font-size: 20px;
+    text-align: center;
     width :500px;
     background-color :lightgray;
     border:1px solid gray;
