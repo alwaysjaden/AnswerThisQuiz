@@ -1,6 +1,6 @@
 # AnswerThisQuiz
 
-![Code Quiz](.Assets/image/snapshot.gif?raw=true "CodeQuiz")
+![Code Quiz](./Assets/image/snapshot.gif?raw=true "CodeQuiz")
 
 # About This Project
 
