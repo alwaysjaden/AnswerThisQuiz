@@ -1,23 +1,23 @@
 var questions = [{
-    question: "1. How do you write 'Hello World' in an alert box?",
-    answers: ["msg('Hello World')", "msgBox('Hello World');", "alertBox('Hello World');", "alert('Hello World');"],
-    correctAnswer: 3
-}, {
-    question: "2. How to empty an array in JavaScript?",
-    answers: ["arrayList[]", "arrayList(0)", "arrayList.length=0", "arrayList.len(0)"],
+    question: "Commonly used data types DO NOT include:",
+    answers: ["strings", "booleans", "alerts", "numbers"],
     correctAnswer: 2
 }, {
-    question: "3. What function to add an element at the begining of an array and one at the end?",
-    answers: ["push,unshift", "unshift,push", "first,push", "unshift,last"],
-    correctAnswer: 1
+    question: "The condition in an if / else statement is enclosed within ____.",
+    answers: ["quotes", "curly brackets", "parentheses", "square brackets"],
+    correctAnswer: 2
 }, {
-    question: "4. What will this output? var a = [1, 2, 3]; console.log(a[6]);",
-    answers: ["undefined", "0", "prints nothing", "Syntax error"],
-    correctAnswer: 0
+    question: "Arrays in Javascript can be used to store ____.",
+    answers: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+    correctAnswer: 3
 }, {
-    question: "5. What would following code return? console.log(typeof typeof 1);",
-    answers: ["string", "number", "Syntax error", "undefined"],
-    correctAnswer: 0
+    question: "String values must be enclosed within ____ when being assigned to variables.",
+    answers: ["commas", "curly brackets", "quotes", "parenthesis"],
+    correctAnswer: 2
+}, {
+    question: "A very useful tool for used during development and debugging for printing content to the debugger is:",
+    answers: ["Javascript", "terminal / bash", "for loops", "console log"],
+    correctAnswer: 3
 }];
 
 // setting varible for elements and sections
@@ -31,12 +31,34 @@ var choiceSec = document.getElementById("choiceSec");
 var ulSecBuild= document.createElement("ul");
 var ulEl = document.querySelector("ul")
 var questionIndex = 0;
-var highScores = document.querySelector("#viewHighScore")
+var modalCont = document.getElementById("modal-content")
 
 // display prompt
-    // Display first screen with Start Button
-// Set timer Function for the Quiz
+  
 
+
+// Modal Elements in variable
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("viewHighScore");
+var span = document.getElementsByClassName("close")[0];
+
+// Open Modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+// Close Modal
+// x bttn
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// anywhere in box
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Set timer Function for the Quiz on Start of Quiz
 startBtn.addEventListener("click", function () {
     // check for zero & set total time for the quiz
     if (timerInterval === 0) {
@@ -54,7 +76,7 @@ startBtn.addEventListener("click", function () {
     showQuestion(questionIndex);
 });
 
-
+// Display  quiz Questions with Start Button
 function showQuestion(questionIndex) {
     // Clears existing data 
     questionSec.innerHTML = "";
@@ -169,3 +191,86 @@ function result(){
     });
 
 }   
+// final page 
+function highscore(){
+        questionSec.innerHTML = "";
+        ulEl.innerHTML = "";
+// display current score and high score history 
+        var h1El = document.createElement("h1")
+        h1El.textContent=" High Scores";
+        questionSec.appendChild(h1El);
+
+        var allScores = localStorage.getItem("allScores");
+
+        allScores = JSON.parse(allScores);
+        if (allScores !== null) {
+// crate list element to display all previous scores + Initial 
+    for (var i = 0; i < allScores.length; i++) {
+
+        var liEl = document.createElement("li");
+        liEl.textContent = allScores[i].initials + " " + allScores[i].score;
+        choiceSec.appendChild(liEl);
+    }};
+
+    returnBtn() 
+}
+function returnBtn() {
+
+// create re-set button to erase local storage memmory
+    var clearBtn = document.createElement("button");
+    clearBtn.setAttribute("id", "clear");
+    clearBtn.setAttribute("class", "btn btn-success");
+    clearBtn.setAttribute("margin-top", "25px");
+    clearBtn.textContent = "Clear Score";
+    choiceSec.appendChild(clearBtn);
+
+    clearBtn.addEventListener("click", function () {
+        localStorage.clear();
+        location.reload();
+    })
+// create button to go back to beginning of the quiz page. 
+    var returnBtn = document.createElement("button");
+    returnBtn.setAttribute("id", "clear");
+    returnBtn.setAttribute("class", "btn btn-warning");
+    returnBtn.setAttribute("margin-top", "25px");
+    returnBtn.textContent = "Re-Start Your Quiz";
+    choiceSec.appendChild(returnBtn);
+
+    clearBtn.addEventListener("click", function () {
+        localStorage.clear();
+        location.reload();
+    })
+
+    returnBtn.addEventListener("click", function(){
+        window.location.replace("./index.html");
+
+
+})
+}
+
+// Modal to Show High Scores
+
+function ModalContent(){
+// display current score and high score history 
+    var h1El = document.createElement("h1")
+    h1El.textContent=" High Scores";
+    modalCont.appendChild(h1El);
+
+    var allScores = localStorage.getItem("allScores");
+
+    allScores = JSON.parse(allScores);
+    if (allScores !== null) {
+// crate list element to display all previous scores + Initial 
+// if no scores are stored display there is no scores to display
+for (var i = 0; i < allScores.length; i++) {
+
+    var liEl = document.createElement("li");
+    liEl.textContent = allScores[i].initials + " " + allScores[i].score;
+    modalCont.appendChild(liEl);
+}} else {
+    h1El.textContent="No High Scores Yet";
+};
+   
+}
+
+ModalContent();

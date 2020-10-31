@@ -11,13 +11,22 @@
     <head>
         <nav class="navbar navbar-light bg-light">
             <a id="viewHighScore" style="float: left;">View Highscore</a>
-            <a id="timer" style="float: right;"></a>
+            <div id="myModal" class="modal">
+
+                <div id="modal-content" class="modal-content">
+                  <span class="close">&times;</span>
+                  <p id="Modal"></p>
+                </div>
+            </div>
+
+            <p id="timer" style="float: right;"></p>
+            
         </nav>
     </head>
     <main class="container">
         <div id="questionsSec">
-            <h1> Hello </h1>
-            <h2> you Need to Solve these Questions</h2>
+            <h1> Coding Quiz Challenge </h1>
+            <p> Try to answer following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
         </div>
         <ul id="choiceSec"></ul>
     
