@@ -32,7 +32,7 @@ Using Javascript, develop your Quiz Page that meets following criteria ;
  * Java Script
  * Bootstrap
 
-
+```
  # Contribution
     Contribution is always greatly appreciated!! 
 
@@ -42,14 +42,14 @@ Using Javascript, develop your Quiz Page that meets following criteria ;
   4 - Push to the Branch ( git push origin YourBranch)
   5 - Open a Pull Request 
 
-
+```
 # License 
     Distributed under the MIT License.
 
-
+```
 # Contact
     Jaden Lee : alwaysjaden@gmail.com
-    Project Link: https://github.com/alwaysjaden/AwsomePassword
+    Project Link: https://github.com/alwaysjaden/AnswerThisQuiz
     Published Github Page : https://alwaysjaden.github.io/AnswerThisQuiz/
 
 
