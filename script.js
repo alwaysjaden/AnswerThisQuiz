@@ -191,6 +191,30 @@ function result(){
     });
 
 }   
+// Modal to Show High Scores
+
+function ModalContent(){
+    // display current score and high score history 
+        var h1El = document.createElement("h1")
+        h1El.textContent=" High Scores";
+        modalCont.appendChild(h1El);
+    
+        var allScores = localStorage.getItem("allScores");
+    
+        allScores = JSON.parse(allScores);
+        if (allScores !== null) {
+    // crate list element to display all previous scores + Initial 
+    // if no scores are stored display there is no scores to display
+    for (var i = 0; i < allScores.length; i++) {
+    
+        var liEl = document.createElement("li");
+        liEl.textContent = allScores[i].initials + " " + allScores[i].score;
+        modalCont.appendChild(liEl);
+    }} else {
+        h1El.textContent="No High Scores Yet";
+    };
+       
+    }
 // final page 
 function highscore(){
         questionSec.innerHTML = "";
@@ -248,29 +272,6 @@ function returnBtn() {
 })
 }
 
-// Modal to Show High Scores
 
-function ModalContent(){
-// display current score and high score history 
-    var h1El = document.createElement("h1")
-    h1El.textContent=" High Scores";
-    modalCont.appendChild(h1El);
-
-    var allScores = localStorage.getItem("allScores");
-
-    allScores = JSON.parse(allScores);
-    if (allScores !== null) {
-// crate list element to display all previous scores + Initial 
-// if no scores are stored display there is no scores to display
-for (var i = 0; i < allScores.length; i++) {
-
-    var liEl = document.createElement("li");
-    liEl.textContent = allScores[i].initials + " " + allScores[i].score;
-    modalCont.appendChild(liEl);
-}} else {
-    h1El.textContent="No High Scores Yet";
-};
-   
-}
 
 ModalContent();
